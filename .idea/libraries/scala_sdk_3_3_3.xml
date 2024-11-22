@@ -1,0 +1,71 @@
+<component name="libraryTable">
+  <library name="scala-sdk-3.3.3" type="Scala">
+    <properties>
+      <language-level>Scala_3_3</language-level>
+      <compiler-classpath>
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/scala-library-2.13.12.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-ext-autolink-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-builder-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/tasty-core_3-3.3.3.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/scala-asm-9.5.0-scala-1.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/jna-5.3.1.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/jackson-dataformat-yaml-2.15.1.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/jline-reader-3.19.0.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/jackson-annotations-2.15.1.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-visitor-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/jackson-core-2.15.1.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/scala3-compiler_3-3.3.3.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/jsoup-1.17.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-jira-converter-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/jackson-databind-2.15.1.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/autolink-0.6.0.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-ext-yaml-front-matter-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/util-interface-1.9.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/liqp-0.8.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-options-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/scala3-library_3-3.3.3.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/jline-terminal-3.19.0.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/scaladoc_3-3.3.3.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/scala3-tasty-inspector_3-3.3.3.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-ast-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-ext-anchorlink-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/annotations-15.0.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/compiler-interface-1.9.3.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-sequence-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/scala3-interfaces-3.3.3.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/antlr4-runtime-4.7.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-html-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-ext-gfm-strikethrough-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-data-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/jackson-datatype-jsr310-2.12.1.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/dist_3-3.3.3.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/jline-terminal-jna-3.19.0.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-ext-gfm-tasklist-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-ext-tables-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-misc-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-ext-wikilink-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/scala3-staging_3-3.3.3.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-ext-emoji-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-collection-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-ext-ins-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-format-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/snakeyaml-2.0.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-ext-superscript-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-dependency-0.62.2.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/strftime4j-1.0.5.jar" />
+        <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/flexmark-util-0.62.2.jar" />
+      </compiler-classpath>
+      <compiler-bridge-binary-jar>file://$USER_HOME$/.ivy2/cache/org.scala-lang/scala3-sbt-bridge/jars/scala3-sbt-bridge-3.3.3.jar</compiler-bridge-binary-jar>
+    </properties>
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/scala3-library_3-3.3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/.libs/scala3-3.3.3/lib/scala-library-2.13.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/src/scala3-3.3.3/library/src" />
+      <root url="file://$PROJECT_DIR$/.libs/scala3-3.3.3/src/scala-2.13.12/src/library" />
+    </SOURCES>
+  </library>
+</component>
