@@ -4,6 +4,9 @@
     <option name="importSettings" value="true" />
     <option name="initialized" value="true" />
     <option name="language" value="en" />
+    <modules>
+      <module name="O1Library" downloadedAt="2024-11-22T21:28:18.541208518Z" version="1.0" />
+    </modules>
     <option name="url" value="https://gitmanager.cs.aalto.fi/static/O1_2024/modules/o1_course_config.json" />
   </component>
 </project>
