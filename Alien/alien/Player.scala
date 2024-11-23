@@ -1,13 +1,13 @@
 package alien
 
-import scala.collection.mutable.Buffer
+import scala.collection.mutable
 import scala.math.{min, max}
 
 class Player(val maxHealth: Int = 100,
              val speed: Int = 1,
              val baseWeight: Float = 1):
   private var _health: Int = this.maxHealth
-  private val _inventory: Buffer[Item] = Buffer.empty
+  private val _inventory: mutable.ArrayBuffer[Item] = mutable.ArrayBuffer.empty
 
   def health: Int = this._health
   def heal(amount: Int): Int =
