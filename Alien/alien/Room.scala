@@ -23,6 +23,14 @@ class Room(val name: String,
   def exits: Map[CompassDir, Room] = this._exits.toMap
   def addExit(dir: CompassDir, room: Room): Unit = this._exits += dir -> room
 
+  // Traverse along a path, starting from this room, and returning the room
+  // at the end.
+  def traverse(path: Vector[CompassDir]): Option[Room] =
+    path.headOption.map(this._exits.get(_)) match
+      case None => Some(this)
+      case Some(None) => None
+      case Some(Some(room)) => room.traverse(path.tail)
+
   // Builder helper for adding an exit to a room.
   // Returns a new room that's just like this room, but with a new exit.
   def withExit(dir: CompassDir, room: Room): Room =
