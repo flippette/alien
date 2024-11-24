@@ -16,9 +16,9 @@ class Room(val name: String,
   def items: Vector[Item] = this._items.toVector
   def addItem(item: Item): Unit = this._items.append(item)
   def removeItem(idx: Int): Option[Item] =
-    val item = this._items.lift(idx)
-    this._items.remove(idx)
-    item
+    this._items.lift(idx) match
+      case Some(item) => this._items.remove(idx); Some(item)
+      case None => None
 
   def exits: Map[CompassDir, Room] = this._exits.toMap
   def addExit(dir: CompassDir, room: Room): Unit = this._exits += dir -> room
@@ -42,8 +42,11 @@ class Room(val name: String,
 
   override def toString: String =
     s"${this.name.capitalize};" +
-      s" items: ${this._items.mkString(", ").trim};" +
-      s" exits: ${this._exits.keys.mkString(", ").trim}"
+      s" items: ${this._items.map(_.name).mkString(", ").trim};" +
+      s" exits: ${
+        if this._exits.isEmpty then "<none>"
+        else this._exits.keys.mkString(", ").trim
+      }"
 end Room
 
 object Room:

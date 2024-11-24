@@ -22,9 +22,9 @@ class Player(val maxHealth: Int = 100,
   def inventory: Vector[Item] = this._inventory.toVector
   def pickUpItem(item: Item): Unit = this._inventory.append(item)
   def dropItem(idx: Int): Option[Item] =
-    val item = this._inventory.lift(idx)
-    this._inventory.remove(idx)
-    item
+    this._inventory.lift(idx) match
+      case Some(item) => this._inventory.remove(idx); Some(item)
+      case None => None
 
   def weight: Float = this.baseWeight + this._inventory.map(_.weight).sum
 
@@ -32,5 +32,8 @@ class Player(val maxHealth: Int = 100,
     s"Player;" +
       s" health: ${this.health};" +
       s" weight: ${this.weight};" +
-      s" items: ${this._inventory.mkString(", ").trim}"
+      s" items: ${
+        if this._inventory.isEmpty then "<none>"
+        else this._inventory.map(_.name).mkString(", ").trim
+      }"
 end Player
