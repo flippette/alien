@@ -20,7 +20,7 @@ class Player(val maxHealth: Int = 100,
     oldHealth - this._health
 
   def inventory: Vector[Item] = this._inventory.toVector
-  def pickUpItem(item: Item): Unit = this._inventory.append(item)
+  def takeItem(item: Item): Unit = this._inventory.append(item)
   def dropItem(idx: Int): Option[Item] =
     this._inventory.lift(idx) match
       case Some(item) => this._inventory.remove(idx); Some(item)

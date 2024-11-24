@@ -21,14 +21,17 @@ class Game:
     this.player.health > 0 && this.playerRoom.name == "escape pod"
   def isLost: Boolean = this.player.health == 0
 
-  // Have the player pick up an item from the room they're in, returning whether
-  // the item was picked up.
-  def pickUp(idx: Int): Boolean =
-    this.playerRoom.removeItem(idx).map(this.player.pickUpItem(_)).isDefined
+  // Have the player take an item from the room they're in, returning whether
+  // the item was taken.
+  def take(idx: Int): Boolean =
+    this.playerRoom.removeItem(idx).map(this.player.takeItem(_)).isDefined
   // Have the player drop an item into the room they're in, returning whether
   // the item was dropped.
   def drop(idx: Int): Boolean =
     this.player.dropItem(idx).map(this.playerRoom.addItem(_)).isDefined
+  // Have the player use an item, returning whether the item was used.
+  def use(idx: Int): Boolean =
+    this.player.dropItem(idx).map(item => println(item.use(this))).isDefined
 
   // Try to move the player in a direction, returning whether the player
   // actually moved.

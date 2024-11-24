@@ -10,6 +10,9 @@ enum Command(literal: String):
   case Player extends Command("player")
   case Room extends Command("room")
   case Move(dir: CompassDir) extends Command("move")
+  case Take(idx: Int) extends Command("take")
+  case Drop(idx: Int) extends Command("drop")
+  case Use(idx: Int) extends Command("use")
 
   // TODO(linh): fill in help text
   def execute(game: Game): Unit =
@@ -22,6 +25,15 @@ enum Command(literal: String):
         if game.move(dir) then s"You move $dir."
         else s"You try to move $dir, but it's blocked off."
       )
+      case Take(idx) => println(
+        if game.take(idx) then s"You take the ${game.player.inventory.last.name}."
+        else "The room doesn't have this item."
+      )
+      case Drop(idx) => println(
+        if game.drop(idx) then s"You drop the ${game.playerRoom.items.last.name}."
+        else "You don't have this item."
+      )
+      case Use(idx) => game.use(idx)
 end Command
 
 object Command:
@@ -39,6 +51,15 @@ object Command:
         case "west" => Some(CompassDir.West)
         case _ => None
       }).map(Command.Move.apply)
+      case "take" => args.tail.headOption
+        .flatMap(_.toIntOption)
+        .map(Command.Take.apply)
+      case "drop" => args.tail.headOption
+        .flatMap(_.toIntOption)
+        .map(Command.Drop.apply)
+      case "use" => args.tail.headOption
+        .flatMap(_.toIntOption)
+        .map(Command.Use.apply)
       case _ => None
     })
 end Command
