@@ -33,13 +33,16 @@ class Room(val name: String,
   def traverse(dir: CompassDir): Option[Room] = this.traverse(Vector(dir))
 
   // Builder helper for adding an exit to a room.
-  // Returns a new room that's just like this room, but with a new exit.
+  // Modifies both rooms to point to each other, and returns the current room.
   def withExit(dir: CompassDir, room: Room): Room =
-    Room(this.name, this.items, this.exits + (dir -> room.withExit(dir.opposite, this)))
+    this._exits.update(dir, room)
+    room._exits.update(dir.opposite, this)
+    this
   // Builder helper for adding an item to a room.
-  // Returns a new room that's just like this room, but with a new item.
+  // Modifies the current room to contain this item, and returns it.
   def withItem(item: Item): Room =
-    Room(this.name, this.items :+ item, this.exits)
+    this._items += item
+    this
 
   override def toString: String =
     s"${this.name.capitalize};" +
