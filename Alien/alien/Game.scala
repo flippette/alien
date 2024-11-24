@@ -29,4 +29,11 @@ class Game:
   // the item was dropped.
   def drop(idx: Int): Boolean =
     this.player.dropItem(idx).map(this.playerRoom.addItem(_)).isDefined
+
+  // Try to move the player in a direction, returning whether the player
+  // actually moved.
+  def move(dir: CompassDir): Boolean =
+    if this._playerPos.lastOption.map(_.opposite == dir) == Some(true) then
+      this._playerPos.dropRightInPlace(1); true
+    else this.playerRoom.traverse(dir).map(_ => this._playerPos += dir).isDefined
 end Game
