@@ -42,10 +42,12 @@ class Room(val name: String,
 
   override def toString: String =
     s"${this.name.capitalize};" +
-      s" items: ${this._items.map(_.name).mkString(", ").trim};" +
+      s" items: ${
+        if this._items.isEmpty then "<none>"
+        else this._items.map(_.name).mkString(", ").trim};" +
       s" exits: ${
         if this._exits.isEmpty then "<none>"
-        else this._exits.keys.mkString(", ").trim
+        else this._exits.keys.mkString(", ").trim.toLowerCase
       }"
 end Room
 
