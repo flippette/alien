@@ -12,7 +12,7 @@ enum Command(literal: String):
   def execute(game: Game): Unit =
     this match
       case Help => println("<help text here>")
-      case Quit => println("bye."); System.exit(0)
+      case Quit => println("Bye."); System.exit(0)
       case Player => println(game.player)
       case Room => println(game.playerRoom)
 end Command
