@@ -30,11 +30,12 @@ class Room(val name: String,
       case None => Some(this)
       case Some(None) => None
       case Some(Some(room)) => room.traverse(path.tail)
+  def traverse(dir: CompassDir): Option[Room] = this.traverse(Vector(dir))
 
   // Builder helper for adding an exit to a room.
   // Returns a new room that's just like this room, but with a new exit.
   def withExit(dir: CompassDir, room: Room): Room =
-    Room(this.name, this.items, this.exits + (dir -> room))
+    Room(this.name, this.items, this.exits + (dir -> room.withExit(dir.opposite, this)))
   // Builder helper for adding an item to a room.
   // Returns a new room that's just like this room, but with a new item.
   def withItem(item: Item): Room =
