@@ -22,7 +22,7 @@ enum Command(literal: String):
       case Player => println(game.player)
       case Room => println(game.playerRoom)
       case Move(dir) => println(
-        if game.move(dir) then s"You move $dir."
+        if game.move(dir) then s"You move $dir into the ${game.playerRoom.name}."
         else s"You try to move $dir, but it's blocked off."
       )
       case Take(idx) => println(
