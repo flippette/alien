@@ -39,6 +39,11 @@ class Room(val name: String,
   // Returns a new room that's just like this room, but with a new item.
   def withItem(item: Item): Room =
     Room(this.name, this.items :+ item, this.exits)
+
+  override def toString: String =
+    s"${this.name.capitalize};" +
+      s" items: ${this._items.mkString(", ").trim};" +
+      s" exits: ${this._exits.keys.mkString(", ").trim}"
 end Room
 
 object Room:
@@ -49,6 +54,6 @@ object Room:
       .withExit(CompassDir.South, Room("hallway")
         .withExit(CompassDir.West, Room("pyrotechnic"))
         .withExit(CompassDir.South, Room("dinner hall")
-          .withItem(Food("loaf of bread", 2, "A supple load of bread.", 50))))
-      .withItem(Food("apple", 1, "A bright red apple.", 25))
+          .withItem(Food("loaf of bread", 2, "A supple load of bread", 50))))
+      .withItem(Food("apple", 1, "A bright red apple", 25))
 end Room

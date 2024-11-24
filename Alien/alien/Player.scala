@@ -27,4 +27,10 @@ class Player(val maxHealth: Int = 100,
     item
 
   def weight: Float = this.baseWeight + this._inventory.map(_.weight).sum
+
+  override def toString: String =
+    s"Player;" +
+      s" health: ${this.health};" +
+      s" weight: ${this.weight};" +
+      s" items: ${this._inventory.mkString(", ").trim}"
 end Player
