@@ -34,6 +34,16 @@ class Room(val name: String,
 
   // Builder helper for adding an exit to a room.
   // Modifies both rooms to point to each other, and returns the current room.
+  //
+  // If either room already points to another room in the direction connecting
+  // the 2, the pointed-to rooms will be overwritten without being patched.
+  // Example:
+  //   A -(west)-> B, C -(east)-> D
+  //   A <-(east)- B, C <-(west)- D
+  // then A.withExit(West, C) will return
+  //   A -(west)-> C, C -(east)-> A
+  //   A <-(east)- B, C <-(west)- D
+  // B and D are now **dangling**.
   def withExit(dir: CompassDir, room: Room): Room =
     this._exits.update(dir, room)
     room._exits.update(dir.opposite, this)
