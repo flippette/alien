@@ -3,7 +3,7 @@ package alien
 import scala.collection.mutable
 import scala.math.{min, max}
 
-class Player(val maxHealth: Int = 100):
+class Player(val name: String = "", val maxHealth: Int = 100):
   private var _health: Int = this.maxHealth
   private val _inventory: mutable.ArrayBuffer[Item] = mutable.ArrayBuffer.empty
 
