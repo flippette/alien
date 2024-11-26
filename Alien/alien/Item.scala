@@ -14,7 +14,7 @@ class Food(name: String, description: String, val nutrition: Int)
         case healed => s"and gain ${this.nutrition} health."
     }"
   override def toString: String =
-      s"${this.description}. Consuming this will restore ${this.nutrition} HP."
+    s"${this.description}. Consuming this will restore ${this.nutrition} HP."
 end Food
 
 class MotionTracker(private var batteryLife: Int)
