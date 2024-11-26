@@ -14,6 +14,7 @@ enum Command(literal: String):
   case Drop(idx: Int) extends Command("drop")
   case Use(idx: Int) extends Command("use")
   case EllenRipley extends Command("ellenripley")
+  case Turn extends Command("turn")
 
   def execute(game: Game): Unit =
     this match
@@ -40,6 +41,9 @@ enum Command(literal: String):
         println("The main character. The heroine. HER.")
         println("You're not in danger. You ARE the danger.")
         println("Explore your powers.")
+      case Turn =>
+        game.endTurn()
+        println("You end your turn.")
 end Command
 
 object Command:

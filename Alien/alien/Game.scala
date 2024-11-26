@@ -6,6 +6,7 @@ import scala.collection.mutable
 
 class Game:
   var player: Player = Player()
+  val enemies: Buffer[Enemy] = Buffer(Enemy("alien"))
   private val _map: Room = Room.map
   // Path to the player from the starting room.
   // Invariant: must lead to a valid Room when traversed from the starting room.
@@ -39,4 +40,7 @@ class Game:
     if this._playerPos.lastOption.exists(_.opposite == dir) then
       this._playerPos.dropRightInPlace(1); true
     else this.playerRoom.traverse(dir).map(_ => this._playerPos += dir).isDefined
+
+  // End the current entity's turn.
+  def endTurn(): Unit = ()
 end Game
