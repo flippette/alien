@@ -18,5 +18,3 @@ import scala.io.StdIn
     else
       "You died. <Dark Souls swoosh>"
   )
-
-  System.exit(0)
