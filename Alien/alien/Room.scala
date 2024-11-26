@@ -45,24 +45,24 @@ class Room(val name: String,
   //   A -(west)-> C, C -(east)-> A
   //   A <-(east)- B, C <-(west)- D
   // B and D are now **dangling**.
-  def withExit(dir: CompassDir, room: Room): Room =
+  private def withExit(dir: CompassDir, room: Room): Room =
     this._exits.update(dir, room)
     room._exits.update(dir.opposite, this)
     this
   // Builder helper for adding an item to a room.
   // Modifies the current room to contain this item, and returns it.
-  def withItem(item: Item): Room =
+  private def withItem(item: Item): Room =
     this._items += item
     this
 
   override def toString: String =
     s"${this.description}\n" +
-      s"You find ${
+      s"You find around you: ${
         if this._items.isEmpty then "no items"
         else this._items.map(_.name).mkString(", ").trim}.\n" +
       s"You see ${
         if this._exits.isEmpty then "no exits."
-        else s"exits to the ${this._exits.keys.mkString(", ").trim.toLowerCase}"
+        else s"exits to the ${this._exits.keys.mkString(", ").trim.toLowerCase}."
       }"
 end Room
 
