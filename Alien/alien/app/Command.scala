@@ -14,10 +14,9 @@ enum Command(literal: String):
   case Drop(idx: Int) extends Command("drop")
   case Use(idx: Int) extends Command("use")
 
-  // TODO(linh): fill in help text
   def execute(game: Game): Unit =
     this match
-      case Help => println("<help text here>")
+      case Help => println("Available commands: quit, player, room, move <direction>, take <index>, drop <index>, use <index>")
       case Quit => println("Bye."); System.exit(0)
       case Player => println(game.player)
       case Room => println(game.playerRoom)
