@@ -13,6 +13,7 @@ enum Command(literal: String):
   case Take(idx: Int) extends Command("take")
   case Drop(idx: Int) extends Command("drop")
   case Use(idx: Int) extends Command("use")
+  case EllenRipley extends Command("ellenripley")
 
   def execute(game: Game): Unit =
     this match
@@ -33,6 +34,8 @@ enum Command(literal: String):
         else "You don't have this item."
       )
       case Use(idx) => game.use(idx)
+      case EllenRipley =>
+        game.player = alien.Player("Ellen Ripley")
 end Command
 
 object Command:
@@ -59,6 +62,7 @@ object Command:
       case "use" => args.tail.headOption
         .flatMap(_.toIntOption)
         .map(Command.Use.apply)
+      case "ellenripley" => Some(Command.EllenRipley)
       case _ => None
     })
 end Command
