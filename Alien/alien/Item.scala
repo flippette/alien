@@ -1,7 +1,7 @@
 package alien
 
 trait Item(val name: String, val weight: Float):
-  def use(game: Game): String = "You twiddle your thumbs, wandering what it is."
+  def use(game: Game): String = "You twiddle your thumbs, wondering what it is."
   override def toString: String = "A strange, alien *ba dum tsss* item."
 end Item
 
