@@ -67,12 +67,36 @@ end Room
 
 object Room:
   // Return the built-in, hard-coded game map as the starting room.
-  // TODO(linh): fill in the actual game map
   def map: Room =
-    Room("medical bay")
-      .withExit(CompassDir.South, Room("hallway")
-        .withExit(CompassDir.West, Room("pyrotechnic"))
-        .withExit(CompassDir.South, Room("dinner hall")
-          .withItem(Food("loaf of bread", 2, "A supple load of bread", 50))))
+    val hallway = Room("hallway")
       .withItem(Food("apple", 1, "A bright red apple", 25))
+    val pyro = Room("pyrotechnics")
+    val armory = Room("armory")
+    val labs = Room("laboratories")
+      .withItem(MotionTracker(2))
+    val mess = Room("mess hall")
+    val cc = Room("command center")
+    val oq = Room("officers' quarters")
+    val pod = Room("escape pod")
+    val sus = Room("vents")
+    val store = Room("storage")
+      .withItem(Food("painkillers", 1, "some painkiller tablets", 25))
+      .withItem(Food("loaf of bread", 2, "A supple load of bread", 50))
+    val dh = Room("dining hall")
+      .withItem(Food("leftover steak", 5, "leftover albeit juicy steak", 50))
+    val quarters = Room("living quarters")
+    Room("medical bay")
+      .withExit(South, hallway
+        .withExit(West, pyro)
+        .withExit(East, armory
+          .withExit(East, labs
+            .withExit(East, mess
+              .withExit(South, cc
+                .withExit(South, oq
+                  .withExit(South, pod))))))
+        .withExit(South, dh
+          .withExit(East, quarters)
+          .withExit(South, store
+            .withExit(South, sus
+              .withExit(East, pod)))))
 end Room
