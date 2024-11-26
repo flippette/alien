@@ -20,11 +20,11 @@ import scala.util.Random
       case Some(cmd) => cmd.execute(game)
       case None => println("Invalid command. See 'help' for a list of commands.")
 
-  println(
+  typeln(
     if game.isWon then
       "You escape from the spaceship, hoping you never face the alien again."
     else
-      "You died. <Dark Souls swoosh>"
+      "You died. Space is cruel. No one can hear you scream in the vastness of space. <Dark Souls swoosh>"
   )
 
 def typeln(s: String): Unit =
