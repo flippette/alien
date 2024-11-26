@@ -70,7 +70,7 @@ object Room:
   // Return the built-in, hard-coded game map as the starting room.
   def map: Room =
     val hallway = Room("hallway", "A dimly lit hallway. It is rather eerie.")
-      .withItem(Food("apple", 1, "A bright red apple", 25))
+      .withItem(Food("apple", "A bright red apple", 25))
     val pyro = Room("pyrotechnics", "Pyro labs, you see broken chemical equipment.")
     val armory = Room("armory", "Armory. There are no guns to be found, all have been used, in vain.")
     val labs = Room("laboratories", "Laboratories. High-tech equipment is developed here. It is all broken now though.")
@@ -81,10 +81,10 @@ object Room:
     val pod = Room("escape pod", "Safety, as you collect a well-earned sigh of relief.")
     val sus = Room("vents", "Ventilation air ducts, they lead to the escape pod.")
     val store = Room("storage", "Storage area, where longer shelf-life items are kept.")
-      .withItem(Food("painkillers", 1, "Some painkiller tablets", 25))
-      .withItem(Food("loaf of bread", 2, "A supple loaf of bread", 50))
+      .withItem(Food("painkillers", "Some painkiller tablets", 25))
+      .withItem(Food("loaf of bread", "A supple loaf of bread", 50))
     val dh = Room("dining hall", "Dining hall, where delicious food is kept. Maybe there is food stored in the freezer.")
-      .withItem(Food("leftover steak", 5, "Leftover albeit juicy steak", 50))
+      .withItem(Food("leftover steak", "Leftover albeit juicy steak", 50))
     val quarters = Room("living quarters", "Living quarters. Only you are not among the dead piled up here. Yet.")
     Room("medical bay", "The medical bay, where cryogenic sleep chambers are kept.")
       .withExit(South, hallway

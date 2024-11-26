@@ -25,10 +25,13 @@ class Player(val maxHealth: Int = 100):
       case None => None
 
   override def toString: String =
-    s"Player;" +
-      s" health: ${this.health};" +
-      s" items: ${
-        if this._inventory.isEmpty then "<none>"
+    s"Player:" +
+      (if this.health > 50 then
+        s" You are relatively healthy." 
+      else 
+        s" You are injured. You should patch up your wounds before carrying on.") +
+      s" Your items: ${
+        if this._inventory.isEmpty then "nothing"
         else this._inventory.map(_.name).mkString(", ").trim
       }"
 end Player
