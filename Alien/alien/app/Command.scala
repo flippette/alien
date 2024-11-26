@@ -35,7 +35,11 @@ enum Command(literal: String):
       )
       case Use(idx) => game.use(idx)
       case EllenRipley =>
-        game.player = alien.Player("Ellen Ripley")
+        game.player = alien.Player("Ellen Ripley", Int.MaxValue)
+        println("You are now Ellen Ripley.")
+        println("The main character. The heroine. HER.")
+        println("You're not in danger. You ARE the danger.")
+        println("Explore your powers.")
 end Command
 
 object Command:
