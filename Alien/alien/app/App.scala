@@ -3,6 +3,7 @@ package alien.app
 import alien.Game
 
 import scala.io.StdIn
+import scala.util.Random
 
 @main def main() =
   val game = Game()
@@ -18,3 +19,10 @@ import scala.io.StdIn
     else
       "You died. <Dark Souls swoosh>"
   )
+
+def typeln(s: String): Unit =
+  def sleepRandom(): Unit = Thread.sleep(Random.nextInt(250) + 100)
+  s.foreach(ch =>
+    print(ch)
+    sleepRandom())
+  println()
