@@ -26,7 +26,7 @@ class Room(val name: String,
   // Traverse along a path, starting from this room, and returning the room
   // at the end.
   def traverse(path: Vector[CompassDir]): Option[Room] =
-    path.headOption.map(this._exits.get(_)) match
+    path.headOption.map(this._exits.get) match
       case None => Some(this)
       case Some(None) => None
       case Some(Some(room)) => room.traverse(path.tail)
