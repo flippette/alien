@@ -5,7 +5,7 @@ import o1.*
 import scala.collection.mutable
 
 class Game:
-  val player: Player = Player()
+  var player: Player = Player()
   private val _map: Room = Room.map
   // Path to the player from the starting room.
   // Invariant: must lead to a valid Room when traversed from the starting room.
