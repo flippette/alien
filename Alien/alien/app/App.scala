@@ -22,7 +22,7 @@ import scala.util.Random
 
   typeln(
     if game.isWon then
-      "You escape from the spaceship, hoping you never face the alien again."
+      "You escape from the spaceship, hoping you never face the alien again. Or will you?"
     else
       "You died. Space is cruel. No one can hear you scream in the vastness of space. <Dark Souls swoosh>"
   )

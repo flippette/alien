@@ -5,6 +5,7 @@ import o1.*
 import scala.collection.mutable
 
 class Room(val name: String,
+           description: String,
            withItems: Vector[Item] = Vector.empty,
            withExits: Map[CompassDir, Room] = Map.empty):
   private val _items: mutable.ArrayBuffer[Item] =
@@ -55,37 +56,37 @@ class Room(val name: String,
     this
 
   override def toString: String =
-    s"${this.name.capitalize};" +
-      s" items: ${
-        if this._items.isEmpty then "<none>"
-        else this._items.map(_.name).mkString(", ").trim};" +
-      s" exits: ${
-        if this._exits.isEmpty then "<none>"
-        else this._exits.keys.mkString(", ").trim.toLowerCase
+    s"${this.description}\n" +
+      s"You find ${
+        if this._items.isEmpty then "no items"
+        else this._items.map(_.name).mkString(", ").trim}.\n" +
+      s"You see ${
+        if this._exits.isEmpty then "no exits."
+        else s"exits to the ${this._exits.keys.mkString(", ").trim.toLowerCase}"
       }"
 end Room
 
 object Room:
   // Return the built-in, hard-coded game map as the starting room.
   def map: Room =
-    val hallway = Room("hallway")
+    val hallway = Room("hallway", "A dimly lit hallway. It is rather eerie.")
       .withItem(Food("apple", 1, "A bright red apple", 25))
-    val pyro = Room("pyrotechnics")
-    val armory = Room("armory")
-    val labs = Room("laboratories")
+    val pyro = Room("pyrotechnics", "Pyro labs, you see broken chemical equipment.")
+    val armory = Room("armory", "Armory. There are no guns to be found, all have been used, in vain.")
+    val labs = Room("laboratories", "Laboratories. High-tech equipment is developed here. It is all broken now though.")
       .withItem(MotionTracker(2))
-    val mess = Room("mess hall")
-    val cc = Room("command center")
-    val oq = Room("officers' quarters")
-    val pod = Room("escape pod")
-    val sus = Room("vents")
-    val store = Room("storage")
-      .withItem(Food("painkillers", 1, "some painkiller tablets", 25))
-      .withItem(Food("loaf of bread", 2, "A supple load of bread", 50))
-    val dh = Room("dining hall")
-      .withItem(Food("leftover steak", 5, "leftover albeit juicy steak", 50))
-    val quarters = Room("living quarters")
-    Room("medical bay")
+    val mess = Room("mess hall", "Mess hall. This is where you would hang out with your crew mates, if they were alive.")
+    val cc = Room("command center", "Command center. Where the ship is piloted from. Nowhere to fly to but safety now.")
+    val oq = Room("officers' quarters", "Officers' quarters. You find some mangled sergeants. Disgusted as you are, you try not to make a sound.")
+    val pod = Room("escape pod", "Safety, as you collect a well-earned sigh of relief.")
+    val sus = Room("vents", "Ventilation air ducts, they lead to the escape pod.")
+    val store = Room("storage", "Storage area, where longer shelf-life items are kept.")
+      .withItem(Food("painkillers", 1, "Some painkiller tablets", 25))
+      .withItem(Food("loaf of bread", 2, "A supple loaf of bread", 50))
+    val dh = Room("dining hall", "Dining hall, where delicious food is kept. Maybe there is food stored in the freezer.")
+      .withItem(Food("leftover steak", 5, "Leftover albeit juicy steak", 50))
+    val quarters = Room("living quarters", "Living quarters. Only you are not among the dead piled up here. Yet.")
+    Room("medical bay", "The medical bay, where cryogenic sleep chambers are kept.")
       .withExit(South, hallway
         .withExit(West, pyro)
         .withExit(East, armory
