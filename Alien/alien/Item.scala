@@ -1,12 +1,12 @@
 package alien
 
-trait Item(val name: String, val weight: Float):
+trait Item(val name: String):
   def use(game: Game): String = "You twiddle your thumbs, wondering what it is."
   override def toString: String = "A strange, alien *ba dum tsss* item."
 end Item
 
-class Food(name: String, weight: Float, description: String, val nutrition: Int)
-  extends Item(name, weight):
+class Food(name: String, description: String, val nutrition: Int)
+  extends Item(name):
   override def use(game: Game): String =
     s"You consume the ${this.name}, ${
       game.player.heal(this.nutrition) match
@@ -18,7 +18,7 @@ class Food(name: String, weight: Float, description: String, val nutrition: Int)
 end Food
 
 class MotionTracker(private var batteryLife: Int)
-  extends Item("motion tracker", 2.0):
+  extends Item("motion tracker"):
   override def toString: String =
     s"A motion tracker, usable for ${this.batteryLife} turns."
 end MotionTracker

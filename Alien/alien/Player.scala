@@ -3,9 +3,7 @@ package alien
 import scala.collection.mutable
 import scala.math.{min, max}
 
-class Player(val maxHealth: Int = 100,
-             val speed: Int = 1,
-             val baseWeight: Float = 1):
+class Player(val maxHealth: Int = 100):
   private var _health: Int = this.maxHealth
   private val _inventory: mutable.ArrayBuffer[Item] = mutable.ArrayBuffer.empty
 
@@ -26,12 +24,9 @@ class Player(val maxHealth: Int = 100,
       case Some(item) => this._inventory.remove(idx); Some(item)
       case None => None
 
-  def weight: Float = this.baseWeight + this._inventory.map(_.weight).sum
-
   override def toString: String =
     s"Player;" +
       s" health: ${this.health};" +
-      s" weight: ${this.weight};" +
       s" items: ${
         if this._inventory.isEmpty then "<none>"
         else this._inventory.map(_.name).mkString(", ").trim
