@@ -15,6 +15,8 @@ class Game:
   // Invariant: must lead to a valid Room when traversed from the starting room.
   private val _playerPos: mutable.ArrayBuffer[CompassDir] =
     mutable.ArrayBuffer.empty
+  // 0 is for the player, 1+ is for enemies
+  private var currentTurn: Int = 0
 
   def playerRoom: Room = this._map.traverse(this._playerPos.toVector) match
     case Some(room) => room
@@ -45,5 +47,14 @@ class Game:
     else this.playerRoom.traverse(dir).map(_ => this._playerPos += dir).isDefined
 
   // End the current entity's turn.
-  def endTurn(): Unit = ()
+  def endTurn(): Unit =
+    this.currentTurn =
+      if this.currentTurn == this.enemies.size then 0
+      else this.currentTurn + 1
+
+  // Have the next entity in line take its turn.
+  def takeTurn(): Unit =
+    this.currentTurn match
+      case 0 => () // Players already take their turn through input
+      case idx => this.enemies(idx).takeTurn()
 end Game
