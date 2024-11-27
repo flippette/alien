@@ -6,9 +6,17 @@ import scala.collection.mutable
 
 class Game:
   var player: Player = Player()
-  val enemies: Buffer[Enemy] = Buffer(
-    Enemy("alien", "You have been killed by the Xenomorph. Its horrifying inner jaw was the last thing you saw before getting your chest pried open."),
-    Enemy("android", "You have been killed by an android. You have been betrayed by that which was made to serve you.")
+  val enemies: mutable.HashMap[Enemy, mutable.ArrayBuffer[CompassDir]] = mutable.HashMap(
+    Enemy(
+      "alien",
+      100,
+      "You have been killed by the Xenomorph. Its horrifying inner jaw was the last thing you saw before getting your chest pried open.",
+    ) -> mutable.ArrayBuffer(South, East, East, East, South),
+    Enemy(
+      "android",
+      25,
+      "You have been killed by an android. You have been betrayed by that which was made to serve you."
+    ) -> mutable.ArrayBuffer(South, South, East),
   )
   private val _map: Room = Room.map
   // Path to the player from the starting room.
@@ -18,7 +26,13 @@ class Game:
   // 0 is for the player, 1+ is for enemies
   private var currentTurn: Int = 0
 
-  def playerRoom: Room = this._map.traverse(this._playerPos.toVector) match
+  def debug(): Unit =
+    println(s"Player: ${this.player} @ ${this._playerPos}")
+    println(s"Enemies: ${this.enemies}")
+
+  def traverse(path: Vector[CompassDir]): Option[Room] = this._map.traverse(path)
+
+  def playerRoom: Room = this.traverse(this._playerPos.toVector) match
     case Some(room) => room
     case None => throw RuntimeException(
       "invariant violated: Game._playerPos does not lead to a Room")
@@ -53,8 +67,9 @@ class Game:
       else this.currentTurn + 1
 
   // Have the next entity in line take its turn.
-  def takeTurn(): Unit =
+  // Returns whether it's the player's turn.
+  def takeTurn(): Boolean =
     this.currentTurn match
-      case 0 => () // Players already take their turn through input
-      case idx => this.enemies(idx).takeTurn()
+      case 0 => true // Players already take their turn through input
+      case idx => this.enemies.keys.toVector(idx - 1).takeTurn(this); false
 end Game

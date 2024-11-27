@@ -14,6 +14,7 @@ enum Command(literal: String):
   case Drop(idx: Int) extends Command("drop")
   case Use(idx: Int) extends Command("use")
   case EllenRipley extends Command("ellenripley")
+  case Debug extends Command("debug")
 
   def execute(game: Game): Unit =
     this match
@@ -24,6 +25,7 @@ enum Command(literal: String):
       case Move(dir) => println(
         if game.move(dir) then
           game.endTurn()
+          while !game.takeTurn() do ()
           s"You move ${dir.toString.toLowerCase} into the ${game.playerRoom.name}.\nYou end your turn."
         else s"You try to move $dir, but it's blocked off."
       )
@@ -42,6 +44,7 @@ enum Command(literal: String):
         println("The main character. The heroine. HER.")
         println("You're not in danger. You ARE the danger.")
         println("Explore your powers.")
+      case Debug => game.debug()
 end Command
 
 object Command:
@@ -69,6 +72,7 @@ object Command:
         .flatMap(_.toIntOption)
         .map(Command.Use.apply)
       case "ellenripley" => Some(Command.EllenRipley)
+      case "debug" => Some(Command.Debug)
       case _ => None
     })
 end Command
