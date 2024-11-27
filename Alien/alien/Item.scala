@@ -31,7 +31,11 @@ class Cctv(private var batteryLife: Int) extends Item("CCTV monitor"):
             .map(_.name)
             .mkString(", ")
             .trim
-        }.\nThe device can still be used for ${this.batteryLife} turns."
+        }.\n" +
+          (if this.expired then
+            "The monitor has run out of battery."
+          else
+            s"The device can still be used for ${this.batteryLife} turns.")
 
   override def expired: Boolean = this.batteryLife == 0
 
