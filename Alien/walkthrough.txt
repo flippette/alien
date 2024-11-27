@@ -1,0 +1,7 @@
+You are a lone survivor stuck on a spaceship.
+Your only means of survival is making it to the ship's escape pod.
+However you are not alone in this craft, as there is an android and a Xenomorph alien ready to hunt you down.
+The android won't hurt you much, but the Xenomorph will kill you instantly if you encounter it.
+There are items and a useful tool available on the map.
+Try to outmaneuver your enemies and you may win.
+There's some fun to be had if you read the code :).
