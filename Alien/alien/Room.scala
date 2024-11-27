@@ -74,7 +74,7 @@ object Room:
     val pyro = Room("pyrotechnics", "Pyro labs, you see broken chemical equipment.")
     val armory = Room("armory", "Armory. There are no guns to be found, all have been used, in vain.")
     val labs = Room("laboratories", "Laboratories. High-tech equipment is developed here. It is all broken now though.")
-      .withItem(MotionTracker(2))
+      .withItem(Cctv(4))
     val mess = Room("mess hall", "Mess hall. This is where you would hang out with your crew mates, if they were alive.")
     val cc = Room("command center", "Command center. Where the ship is piloted from. Nowhere to fly to but safety now.")
     val oq = Room("officers' quarters", "Officers' quarters. You find some mangled sergeants. Disgusted as you are, you try not to make a sound.")

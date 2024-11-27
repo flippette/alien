@@ -29,7 +29,7 @@ class Game:
   private var currentTurn: Int = 0
 
   def debug(): Unit =
-    println(s"Player: ${this.player} @ ${this._playerPos}")
+    println(s"Player: health = ${this.player.health}, inventory = ${this.player.inventory} @ ${this._playerPos}")
     println(s"Enemies: ${this.enemies}")
 
   def traverse(path: Vector[CompassDir]): Option[Room] = this._map.traverse(path)
@@ -53,7 +53,10 @@ class Game:
     this.player.dropItem(idx).map(this.playerRoom.addItem).isDefined
   // Have the player use an item, returning whether the item was used.
   def use(idx: Int): Boolean =
-    this.player.dropItem(idx).map(item => println(item.use(this))).isDefined
+    this.player.inventory.lift(idx).map(item =>
+      println(item.use(this))
+      if item.expired then this.player.dropItem(idx)
+    ).isDefined
 
   // Try to move the player in a direction, returning whether the player
   // actually moved.
