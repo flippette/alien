@@ -18,10 +18,10 @@ class Food(name: String, description: String, val nutrition: Int)
     s"${this.description}. Consuming this will restore ${this.nutrition} health."
 end Food
 
-class Cctv(private var batteryLife: Int) extends Item("CCTV"):
+class Cctv(private var batteryLife: Int) extends Item("CCTV monitor"):
   override def use(game: Game): String =
     this.batteryLife match
-      case 0 => "The CCTV has run out of battery."
+      case 0 => "The CCTV monitor has run out of battery."
       case _ =>
         this.batteryLife -= 1
         s"You view the CCTV footage and locate enemies in these rooms: ${
@@ -35,6 +35,7 @@ class Cctv(private var batteryLife: Int) extends Item("CCTV"):
 
   override def expired: Boolean = this.batteryLife == 0
 
-  // TODO(linh): description
-  override def toString: String = "todo"
+  override def toString: String =
+    "This is a tablet that can access CCTV footage on ship facilities.\n" +
+      s"It has enough battery for ${this.batteryLife} more turns."
 end Cctv
