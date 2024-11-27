@@ -62,7 +62,7 @@ class Room(val name: String,
         else this._items.map(_.name).mkString(", ").trim}.\n" +
       s"You see ${
         if this._exits.isEmpty then "no exits."
-        else s"exits to the ${this._exits.keys.mkString(", ").trim.toLowerCase}."
+        else s"exits to the ${this._exits.iterator.map((dir, room) => s"$dir (${room.name})").mkString(", ").trim.toLowerCase}."
       }"
 end Room
 
