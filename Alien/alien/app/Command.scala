@@ -24,7 +24,7 @@ enum Command(literal: String):
       case Move(dir) => println(
         if game.move(dir) then
           game.endTurn()
-          s"You move ${dir.toString.toLowerCase} into the ${game.playerRoom.name}."
+          s"You move ${dir.toString.toLowerCase} into the ${game.playerRoom.name}.\nYou end your turn."
         else s"You try to move $dir, but it's blocked off."
       )
       case Take(idx) => println(
