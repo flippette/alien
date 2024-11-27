@@ -1,6 +1,7 @@
 package alien
 
 import scala.util.Random
+import scala.math.max
 
 class Enemy(val name: String, val damage: Int, val hurtDescription: String, val killDescription: String):
   def takeTurn(game: Game): Unit =
@@ -12,9 +13,11 @@ class Enemy(val name: String, val damage: Int, val hurtDescription: String, val 
           game.player.hurt(this.damage, this)
 
         // walk forward in some direction and hurt the player there
-        val exits = room.exits
-        val rand = Random.nextInt(exits.size)
-        val (dir, moveTo) = (exits.keys.toVector(rand), exits.values.toVector(rand))
+        val exits = room.exits.iterator.toVector
+        val rand = Random.nextInt(max(exits.size - 1, 1))
+        val (dir, moveTo) = exits(rand) match
+          case (_, room) if room.name == "escape pod" => exits(rand + 1)
+          case tup => tup
         ownPath.append(dir)
         if game.traverse(ownPath.toVector) == game.playerRoom then
           game.player.hurt(this.damage, this)
