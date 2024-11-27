@@ -1,6 +1,5 @@
 package alien
 
-class Enemy(val name: String):
-  // TODO(linh): describe an enemy
-  override def toString: String = "todo"
+class Enemy(val name: String, val killDescription: String):
+  override def toString: String = this.name
 end Enemy

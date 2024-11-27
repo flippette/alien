@@ -6,7 +6,10 @@ import scala.collection.mutable
 
 class Game:
   var player: Player = Player()
-  val enemies: Buffer[Enemy] = Buffer(Enemy("alien"))
+  val enemies: Buffer[Enemy] = Buffer(
+    Enemy("alien", "You have been killed by the Xenomorph. Its horrifying inner jaw was the last thing you saw before getting your chest pried open."),
+    Enemy("android", "You have been killed by an android. You have been betrayed by that which was made to serve you.")
+  )
   private val _map: Room = Room.map
   // Path to the player from the starting room.
   // Invariant: must lead to a valid Room when traversed from the starting room.
