@@ -12,10 +12,14 @@ class Player(val name: String = "", val maxHealth: Int = 100):
     val oldHealth = this._health
     this._health = min(this.maxHealth, oldHealth + amount)
     this._health - oldHealth
-  def hurt(amount: Int): Int =
+  def hurt(amount: Int, enemy: Enemy): Int =
     val oldHealth = this._health
     this._health = max(0, oldHealth - amount)
-    oldHealth - this._health
+    val hurtFor = oldHealth - this._health
+    this._health match
+      case 0 => println(enemy.killDescription)
+      case _ => println(enemy.hurtDescription)
+    hurtFor
 
   def inventory: Vector[Item] = this._inventory.toVector
   def takeItem(item: Item): Unit = this._inventory.append(item)

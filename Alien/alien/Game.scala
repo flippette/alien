@@ -10,12 +10,14 @@ class Game:
     Enemy(
       "alien",
       100,
-      "You have been killed by the Xenomorph. Its horrifying inner jaw was the last thing you saw before getting your chest pried open.",
+      "You come across a Xenomorph. The alien feebly tries to hurt you, but your aura is too strong for its match. It cowers away.",
+      "You confront a gnarly Xenomorph. Its horrifying inner jaw was the last thing you saw before getting your chest pried open.",
     ) -> mutable.ArrayBuffer(South, East, East, East, South),
     Enemy(
       "android",
       25,
-      "You have been killed by an android. You have been betrayed by that which was made to serve you."
+      "You come across an angered android. It tries to hit you with a wrench and deals moderate damage.",
+      "You confront an android. You have been betrayed by that which was made to serve you as it mashes your skull with its wrench."
     ) -> mutable.ArrayBuffer(South, South, East),
   )
   private val _map: Room = Room.map

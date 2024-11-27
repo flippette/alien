@@ -1,6 +1,6 @@
 package alien.app
 
-import alien.Game
+import alien.{Game, Enemy}
 
 import o1.*
 
@@ -15,6 +15,7 @@ enum Command(literal: String):
   case Use(idx: Int) extends Command("use")
   case EllenRipley extends Command("ellenripley")
   case Debug extends Command("debug")
+  case Kms extends Command("kms")
 
   def execute(game: Game): Unit =
     this match
@@ -22,13 +23,13 @@ enum Command(literal: String):
       case Quit => println("Bye."); System.exit(0)
       case Player => println(game.player)
       case Room => println(game.playerRoom)
-      case Move(dir) => println(
+      case Move(dir) =>
         if game.move(dir) then
           game.endTurn()
-          while !game.takeTurn() do ()
-          s"You move ${dir.toString.toLowerCase} into the ${game.playerRoom.name}.\nYou end your turn."
-        else s"You try to move $dir, but it's blocked off."
-      )
+          println(s"You move ${dir.toString.toLowerCase} into the ${game.playerRoom.name}.")
+          while !game.takeTurn() && !game.isLost do ()
+          if !game.isLost then println("You end your turn.")
+        else println(s"You try to move $dir, but it's blocked off.")
       case Take(idx) => println(
         if game.take(idx) then s"You take the ${game.player.inventory.last.name}."
         else "The room doesn't have this item."
@@ -45,6 +46,10 @@ enum Command(literal: String):
         println("You're not in danger. You ARE the danger.")
         println("Explore your powers.")
       case Debug => game.debug()
+      case kms => game.player.hurt(
+        game.player.health,
+        Enemy("The developers", Int.MaxValue, "", "EMOTIONAL DAMAGE")
+      )
 end Command
 
 object Command:
@@ -56,10 +61,10 @@ object Command:
       case "player" => Some(Command.Player)
       case "room" => Some(Command.Room)
       case "move" => args.tail.headOption.map(_.toLowerCase).flatMap({
-        case "north" => Some(CompassDir.North)
-        case "east" => Some(CompassDir.East)
-        case "south" => Some(CompassDir.South)
-        case "west" => Some(CompassDir.West)
+        case "north" => Some(North)
+        case "east" => Some(East)
+        case "south" => Some(South)
+        case "west" => Some(West)
         case _ => None
       }).map(Command.Move.apply)
       case "take" => args.tail.headOption
@@ -73,6 +78,7 @@ object Command:
         .map(Command.Use.apply)
       case "ellenripley" => Some(Command.EllenRipley)
       case "debug" => Some(Command.Debug)
+      case "kms" => Some(Command.Kms)
       case _ => None
     })
 end Command
